@@ -1,2 +1,2 @@
-# JeuStyleCandyCrash
-jeu style candy crash développé en JS en TP
+# Progression
+Version actuelle est developpée en div sans un système de chute.
