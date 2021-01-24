@@ -176,6 +176,7 @@ class Grille {
           this.tabCookies[i][j].viderCookie();
       }
     }
+    this.executerChute();
   }
 
   /* vide la grille de tous les match après les avoir detecter */
@@ -200,6 +201,27 @@ class Grille {
     if(tabelements.length>=3){
       for(var z = 0;z<tabelements.length;z++)
       tabelements[z].marquer();
+    }
+  }
+
+  /* algorithme de chute, il boucle sur la liste tant qu'il y a de chute possible et l'execute */
+  executerChute(){
+    let hasChute = true;
+    while(hasChute){
+      let chute = false;
+    for( var i = 0;i<this.lignes-1;i++){
+      for(var j = 0;j<this.colonnes;j++){
+        if(this.tabCookies[i+1][j].type==-1 && this.tabCookies[i][j].type>-1){
+          chute = true;
+          let cookie1 = this.tabCookies[i+1][j];
+          let cookie2 = this.tabCookies[i][j];
+          Cookie.swapCookies(cookie1,cookie2);
+          cookie1.div.appendChild(cookie1.htmlimage);
+          cookie2.div.appendChild(cookie2.htmlimage);
+        }
+      }
+    }
+    if(!chute) hasChute=false;
     }
   }
 }
